@@ -15,6 +15,9 @@ namespace Auto.Test.Domain.AppTests
         [Fact]
         public void DoTestOne()
         {
+            Console.WriteLine("Welcome!");
+            Console.Out.WriteLine("hello");
+            Assert.True(true, "enter test");
             //string path = Environment.CurrentDirectory + "\\Resource\\AppDataOne.xlsx";
             //ExcelHelper eh = new ExcelHelper();
             //List<Dictionary<string, string>> testData = eh.GetDataRows(path, "TestData");
