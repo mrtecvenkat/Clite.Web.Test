@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RelevantCodes.ExtentReports;
 using Auto.Test.Org.Core.Driver;
+using Xunit.Abstractions;
 
 namespace Auto.Test.ReportHelpers
 {
@@ -14,6 +15,11 @@ namespace Auto.Test.ReportHelpers
     {
         private static ExtentReports report;
         private static ExtentTest curtest;
+        public static ITestOutputHelper _output
+        {
+            get; set;
+        }
+
         public Reporter()
         {
             string resultPath = Environment.CurrentDirectory + "\\" + TestDataHelper.GetValueFromAppSettings("TestResults") + "\\ExtentReport.html";
@@ -45,16 +51,17 @@ namespace Auto.Test.ReportHelpers
             string resultPath = TestDataHelper.GetValueFromAppSettings("TestResults");
             DriverManager.TakeScreenshot(resultPath + "\\" + screenShortName);
 
-            curtest.Log(LogStatus.Fail, msg);
+            _output.WriteLine(msg);
+
 
         }
         public static void LogPassMassage(string msg)
         {
-
+            _output.WriteLine(msg);
         }
         public static void LogDebugMassage(string msg)
         {
-
+            _output.WriteLine(msg);
         }
     }
 }

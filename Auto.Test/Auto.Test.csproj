@@ -101,12 +101,11 @@
     <Compile Include="Org\Core\Helpers\SetOrSelectHelper.cs" />
     <Compile Include="Org\Core\Helpers\GenericHelpers\TestDataHelper.cs" />
     <Compile Include="Org\Core\Helpers\UIReadHelper.cs" />
+    <Compile Include="Org\Core\Util\RegExUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Org\Core\Driver\SeleniumJavaScriptActions.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Org\Core\Util\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
