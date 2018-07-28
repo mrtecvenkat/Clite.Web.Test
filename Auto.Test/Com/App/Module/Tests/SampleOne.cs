@@ -7,6 +7,7 @@ using Xunit;
 using Auto.Test.Tool.Core;
 using Auto.Test.Tool.ActionHelpers;
 using Auto.Test.GenericHelpers;
+using Auto.Test.Org.Core.Driver;
 
 namespace Auto.Test.Domain.AppTests
 {

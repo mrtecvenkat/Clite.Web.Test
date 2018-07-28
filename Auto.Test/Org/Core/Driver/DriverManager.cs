@@ -12,7 +12,7 @@ using OpenQA.Selenium.Remote;
 using System.Diagnostics;
 using Auto.Test.GenericHelpers;
 
-namespace Auto.Test.Tool.Core
+namespace Auto.Test.Org.Core.Driver
 {
     public class DriverManager
     {
@@ -97,10 +97,8 @@ namespace Auto.Test.Tool.Core
             }
             catch (Exception ex)
             {
-                ReportHelpers.Reporter.LogErrorMassage("Unable to naviage url <" + url + "> exception:" + ex.Message);
+                ReportHelpers.Reporter.LogFailMassage("Unable to naviage url <" + url + "> exception:" + ex.Message);
             }
         }
     }
-
-
 }

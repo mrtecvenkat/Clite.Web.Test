@@ -70,33 +70,52 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\AppTests\SampleOne.cs" />
-    <Compile Include="GenericHelpers\ExcelHelper.cs" />
-    <Compile Include="GenericHelpers\FilePathHelper.cs" />
-    <Compile Include="ReportHelpers\Reporter.cs" />
-    <Compile Include="Support\CommonVariables.cs" />
-    <Compile Include="Tool\ActionHelpers\MouseHelper.cs" />
-    <Compile Include="Tool\ActionHelpers\UITableGridHelper.cs" />
-    <Compile Include="Tool\Core\ActionKeywords.cs" />
-    <Compile Include="Tool\Core\DriverManager.cs" />
-    <Compile Include="Tool\ActionHelpers\ClickHelper.cs" />
-    <Compile Include="GenericHelpers\DateHelper.cs" />
-    <Compile Include="Tool\ActionHelpers\SetOrSelectHelper.cs" />
-    <Compile Include="GenericHelpers\TestDataHelper.cs" />
-    <Compile Include="Tool\ActionHelpers\UIReadHelper.cs" />
+    <Compile Include="Com\App\Global\Support\GlobalElementSelectors.cs" />
+    <Compile Include="Com\App\Hooks\AppHooks.cs" />
+    <Compile Include="Com\App\Module\Support\ElementSelecotors.cs" />
+    <Compile Include="Com\App\Module\Tests\SamplTest.cs" />
+    <Compile Include="Com\App\Module\Tests\SampleOne.cs" />
+    <Compile Include="Org\Core\Helpers\GenericHelpers\ExcelHelper.cs" />
+    <Compile Include="Org\Core\Helpers\GenericHelpers\FilePathHelper.cs" />
+    <Compile Include="Org\Core\Data\CSVDataManager.cs" />
+    <Compile Include="Org\Core\Data\DBDataManager.cs" />
+    <Compile Include="Org\Core\Data\DocDataManager.cs" />
+    <Compile Include="Org\Core\Data\ExcelDataManager.cs" />
+    <Compile Include="Org\Core\Data\JSONDataManager.cs" />
+    <Compile Include="Org\Core\Data\TextFileDataManager.cs" />
+    <Compile Include="Org\Core\Data\XMLDataManager.cs" />
+    <Compile Include="Org\Core\Driver\DriverManager.cs" />
+    <Compile Include="Org\Core\Services\IGlobalDataContext.cs" />
+    <Compile Include="Org\Core\Services\IReporterService.cs" />
+    <Compile Include="Org\Core\Services\ITestDataContext.cs" />
+    <Compile Include="Org\Core\Services\ITestResutlsContext.cs" />
+    <Compile Include="Org\Core\Services\ITestRunContext.cs" />
+    <Compile Include="Org\Core\Services\ITestScenarioContext.cs" />
+    <Compile Include="Org\Core\Reporting\Reporter.cs" />
+    <Compile Include="Com\App\Module\Support\CommonVariables.cs" />
+    <Compile Include="Org\Core\Helpers\MouseHelper.cs" />
+    <Compile Include="Org\Core\Helpers\UITableGridHelper.cs" />
+    <Compile Include="Org\Core\Driver\ActionKeywords.cs" />
+    <Compile Include="Org\Core\Helpers\ClickHelper.cs" />
+    <Compile Include="Org\Core\Helpers\GenericHelpers\DateHelper.cs" />
+    <Compile Include="Org\Core\Helpers\SetOrSelectHelper.cs" />
+    <Compile Include="Org\Core\Helpers\GenericHelpers\TestDataHelper.cs" />
+    <Compile Include="Org\Core\Helpers\UIReadHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tool\Core\SeleniumJavaScriptActions.cs" />
+    <Compile Include="Org\Core\Driver\SeleniumJavaScriptActions.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Org\Core\Util\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Resource\AppData.xls">
+    <None Include="Com\App\Resource\AppData.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resource\AppDataOne.xlsx">
+    <None Include="Com\App\Resource\AppDataOne.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -12,6 +12,7 @@ using OpenQA.Selenium.Remote;
 using System.Diagnostics;
 using Auto.Test.Tool.Core;
 using Auto.Test.ReportHelpers;
+using Auto.Test.Org.Core.Driver;
 
 namespace Auto.Test.Tool.ActionHelpers
 {
