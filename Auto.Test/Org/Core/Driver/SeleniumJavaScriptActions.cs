@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using Auto.Test.Tool;
 using System.Threading;
+using Auto.Test.Org.Core.Driver;
 
 namespace Auto.Test.Tool.Core
 {

@@ -14,6 +14,7 @@ using System.Diagnostics;
 using Auto.Test.Tool.Core;
 using Auto.Test.ReportHelpers;
 using System.Threading;
+using Auto.Test.Org.Core.Driver;
 
 namespace Auto.Test.Tool.ActionHelpers
 {
@@ -25,7 +26,7 @@ namespace Auto.Test.Tool.ActionHelpers
             if (ele != null)
                 ele.SendKeys(value);
             else
-                Reporter.LogErrorMassage("Unable to find element " + locator);
+                Reporter.LogFailMassage("Unable to find element " + locator);
         }
         public static void SetFieldValueById(string id, string value)
         {
@@ -74,7 +75,7 @@ namespace Auto.Test.Tool.ActionHelpers
                 UIReadHelper.GetVisibleElement(By.XPath("//option[text()='" + value + "']")).Click();
             }
             else
-                Reporter.LogErrorMassage("Unable to find element " + locator);
+                Reporter.LogFailMassage("Unable to find element " + locator);
         }
         public static void SelectFieldValueById(string id, string value)
         {

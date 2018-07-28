@@ -12,6 +12,7 @@ using OpenQA.Selenium.Remote;
 using System.Diagnostics;
 using Auto.Test.Tool.Core;
 using Auto.Test.ReportHelpers;
+using Auto.Test.Org.Core.Driver;
 
 namespace Auto.Test.Tool.ActionHelpers
 {
@@ -23,7 +24,7 @@ namespace Auto.Test.Tool.ActionHelpers
             if (ele != null)
                 ele.Click();
             else
-                Reporter.LogErrorMassage("Unable to find element " + locator);
+                Reporter.LogFailMassage("Unable to find element " + locator);
         }
         public static void ClickOnElemnetById(string id)
         {

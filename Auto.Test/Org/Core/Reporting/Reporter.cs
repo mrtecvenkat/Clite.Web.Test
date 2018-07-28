@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RelevantCodes.ExtentReports;
+using Auto.Test.Org.Core.Driver;
 
 namespace Auto.Test.ReportHelpers
 {
@@ -13,11 +14,12 @@ namespace Auto.Test.ReportHelpers
     {
         private static ExtentReports report;
         private static ExtentTest curtest;
-        public static void StartReporting()
+        public Reporter()
         {
             string resultPath = Environment.CurrentDirectory + "\\" + TestDataHelper.GetValueFromAppSettings("TestResults") + "\\ExtentReport.html";
             report = new ExtentReports(resultPath);
         }
+
         public static void EndReporting()
         {
             report.Flush();
