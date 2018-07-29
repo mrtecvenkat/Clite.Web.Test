@@ -13,14 +13,20 @@ namespace Auto.Test.ReportHelpers
 {
     public class Reporter : DriverManager
     {
-        private static ExtentReports report;
-        private static ExtentTest curtest;
+        private static ExtentReports report
+        {
+            get; set;
+        }
+        private static ExtentTest curtest
+        {
+            get; set;
+        }
         public static ITestOutputHelper _output
         {
             get; set;
         }
 
-        public Reporter()
+        public static void SetReporter()
         {
             string resultPath = Environment.CurrentDirectory + "\\" + TestDataHelper.GetValueFromAppSettings("TestResults") + "\\ExtentReport.html";
             report = new ExtentReports(resultPath);
@@ -28,11 +34,22 @@ namespace Auto.Test.ReportHelpers
 
         public static void EndReporting()
         {
-            report.Flush();
-            report.Close();
+            try
+            {
+                report.Flush();
+                report.Close();
+            }
+            catch (Exception er)
+            {
+
+            }
         }
         public static void StartTestReporting(string testcase, string description = "")
         {
+            if (curtest != null)
+            {
+                report.EndTest(curtest);
+            }
             curtest = report.StartTest(testcase);
 
         }
@@ -48,19 +65,31 @@ namespace Auto.Test.ReportHelpers
             int randomItem = rnd.Next(1, 999999);
             if (testcaseid == "")
                 screenShortName = randomItem + ".png";
-            string resultPath = TestDataHelper.GetValueFromAppSettings("TestResults");
-            DriverManager.TakeScreenshot(resultPath + "\\" + screenShortName);
-
+            string impPath = Environment.CurrentDirectory + "\\" + TestDataHelper.GetValueFromAppSettings("TestResults") + "\\" + screenShortName;
+            DriverManager.TakeScreenshot(impPath);
+            curtest.Log(LogStatus.Fail, curtest.AddScreenCapture(impPath));
             _output.WriteLine(msg);
-
-
+        }
+        public static void LogErrorMassage(string msg, string testcaseid = "")
+        {
+            Random rnd = new Random();
+            string screenShortName = testcaseid + ".png";
+            int randomItem = rnd.Next(1, 999999);
+            if (testcaseid == "")
+                screenShortName = randomItem + ".png";
+            string impPath = Environment.CurrentDirectory + "\\" + TestDataHelper.GetValueFromAppSettings("TestResults") + "\\" + screenShortName;
+            DriverManager.TakeScreenshot(impPath);
+            curtest.Log(LogStatus.Error, curtest.AddScreenCapture(impPath));
+            _output.WriteLine(msg);
         }
         public static void LogPassMassage(string msg)
         {
+            curtest.Log(LogStatus.Pass, msg);
             _output.WriteLine(msg);
         }
         public static void LogDebugMassage(string msg)
         {
+            curtest.Log(LogStatus.Info, msg);
             _output.WriteLine(msg);
         }
     }
