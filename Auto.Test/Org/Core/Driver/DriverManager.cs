@@ -11,6 +11,8 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using System.Diagnostics;
 using Auto.Test.GenericHelpers;
+using Xunit;
+using Auto.Test.ReportHelpers;
 
 namespace Auto.Test.Org.Core.Driver
 {
@@ -55,6 +57,8 @@ namespace Auto.Test.Org.Core.Driver
                     ChromeOptions options = new ChromeOptions();
                     options.SetLoggingPreference(LogType.Browser, LogLevel.Warning);
                     curDriver = new ChromeDriver(options);
+                    Reporter.SetReporter();
+                    Reporter.StartTestReporting("Test Started");
                     break;
 
 
@@ -86,6 +90,7 @@ namespace Auto.Test.Org.Core.Driver
         public static void SwitchBackToMainWindow()
         {
             driver.SwitchTo().Window(curWindowId);
+            Reporter.LogPassMassage("Application Successfully swithced to window id" + curWindowId);
         }
         public static void Open(string url = "")
         {
@@ -94,11 +99,20 @@ namespace Auto.Test.Org.Core.Driver
             try
             {
                 driver.Navigate().GoToUrl(url);
+                Reporter.LogPassMassage("Successfully Navigates to URL " + url);
             }
             catch (Exception ex)
             {
-                ReportHelpers.Reporter.LogFailMassage("Unable to naviage url <" + url + "> exception:" + ex.Message);
+                Reporter.LogFailMassage("Unable to naviage url <" + url + "> exception:" + ex.Message);
             }
+        }
+
+        public void Exit()
+        {
+            curDriver.Quit();
+            Reporter.LogPassMassage("Application Successfully closed");
+            Reporter.EndTestReporting();
+            Reporter.EndReporting();
         }
     }
 }
