@@ -18,19 +18,33 @@ namespace Auto.Test.Tool.ActionHelpers
 {
     public class UIReadHelper : DriverManager
     {
+        private static int maxTimeOuts = 90;
+        private static int counter = 0;
         public static IWebElement GetVisibleElement(By locator)
         {
             try
             {
                 var elements = driver.FindElements(locator).Where(x => x.Displayed);
                 if (elements.Count() == 0)
-                    return null;
+                {
+                    if (counter < maxTimeOuts)
+                    {
+                        counter++;
+                        return GetVisibleElement(locator);
+                    }
+                    else
+                        return null;
+                }
                 else
+                {
+                    counter = 0;
                     return elements.ElementAt(0);
+                }
+
             }
             catch (Exception ex)
             {
-                Reporter.LogDebugMassage("GetVisibleElement: " + ex.Message);
+                Reporter.LogErrorMassage("Unable to find element : " + locator + " and Error:\n" + ex.Message);
                 return null;
             }
         }

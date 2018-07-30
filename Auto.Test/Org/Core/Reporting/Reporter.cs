@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using RelevantCodes.ExtentReports;
 using Auto.Test.Org.Core.Driver;
 using Xunit.Abstractions;
+using Xunit;
 
 namespace Auto.Test.ReportHelpers
 {
@@ -69,6 +70,7 @@ namespace Auto.Test.ReportHelpers
             DriverManager.TakeScreenshot(impPath);
             curtest.Log(LogStatus.Fail, curtest.AddScreenCapture(impPath));
             _output.WriteLine(msg);
+            Assert.True(false, msg);
         }
         public static void LogErrorMassage(string msg, string testcaseid = "")
         {
@@ -81,16 +83,19 @@ namespace Auto.Test.ReportHelpers
             DriverManager.TakeScreenshot(impPath);
             curtest.Log(LogStatus.Error, curtest.AddScreenCapture(impPath));
             _output.WriteLine(msg);
+            Assert.True(false, msg);
         }
         public static void LogPassMassage(string msg)
         {
             curtest.Log(LogStatus.Pass, msg);
             _output.WriteLine(msg);
+            Assert.True(true, msg);
         }
         public static void LogDebugMassage(string msg)
         {
             curtest.Log(LogStatus.Info, msg);
             _output.WriteLine(msg);
+            Assert.True(true, msg);
         }
     }
 }
