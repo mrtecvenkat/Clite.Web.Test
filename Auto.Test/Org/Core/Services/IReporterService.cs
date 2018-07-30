@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace Auto.Test.Org.Core.Services
 {
-    interface IReporterService
+    public interface IReporterService
     {
+        //Create Reporter
+        IReporterService CreateReport(string path);
+        //Add Environment details
+
+        //Add Scenario
+        //Add TestCase
+        //Log TestStep        
+        //Close TestCase
+        //CloseScenario
     }
+
+
 }
